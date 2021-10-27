@@ -1,11 +1,14 @@
 package steps_definition;
 
+import base_das_classes.BasePage;
 import base_das_classes.BaseSteps;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 
 public class TestandoOBrowserAbrindoOGoogleSteps extends BaseSteps {
+
+    BasePage browserTest = new BasePage(BaseSteps.browser);
 
     @Dado("^que o browser foi aberto$")
     public void que_o_browser_foi_aberto() throws Throwable {

@@ -2,13 +2,13 @@ package steps_definition;
 
 import base_das_classes.BaseSteps;
 import cucumber.api.Scenario;
-import org.junit.After;
-import org.junit.Before;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 
 public class Hooks {
 
     @Before
-    public void BeforeAllTest(Scenario _cenario) {
+    public void BeforeAllTest(Scenario _cenario) throws Throwable {
         BaseSteps.openBrowser();
         BaseSteps.cenario = _cenario;
     }
