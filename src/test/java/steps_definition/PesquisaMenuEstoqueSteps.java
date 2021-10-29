@@ -39,7 +39,7 @@ public class PesquisaMenuEstoqueSteps extends BaseSteps {
     @E("^preencho o campo de versao$")
     public void preencho_o_campo_de_versao() {
         pageEstoque.clickFiltroDeVersao();
-        pageEstoque.escolherVersao();
+        pageEstoque.escolherVersao("1.5");
     }
 
     @Entao("^o sistema mostra os veiculos$")
@@ -54,10 +54,15 @@ public class PesquisaMenuEstoqueSteps extends BaseSteps {
      */
     @Quando("^preencho o campo com uma marca invalida$")
     public void preenchoOCampoComUmaMarcaInvalida() {
+        pageEstoque.clickFiltroDeMarcas();
+        pageEstoque.escolherMarcaInvalida("moto");
     }
 
     @Entao("^o sistema mostra que nao ha resultados$")
-    public void oSistemaMostraQueNaoHaResultados() {
+    public void oSistemaMostraQueNaoHaResultados() throws InterruptedException {
+        String txtNoTeste = pageEstoque.resultadoPesqMarcModelInvalida();
+        String txtEsperado = "Nenhum resultado";
+        Assert.assertTrue(txtNoTeste.equals(txtEsperado));
     }
 
     /**
@@ -65,6 +70,8 @@ public class PesquisaMenuEstoqueSteps extends BaseSteps {
      */
     @E("^preencho o campo com um modelo invalido$")
     public void preenchoOCampoComUmModeloInvalido() {
+        pageEstoque.clickFiltroDeModelo();
+        pageEstoque.escolherModeloInvalido("cb500");
     }
 
     /**
@@ -72,5 +79,14 @@ public class PesquisaMenuEstoqueSteps extends BaseSteps {
      */
     @E("^preencho o campo com uma versao invalida$")
     public void preenchoOCampoComUmaVersaoInvalida() {
+        pageEstoque.clickFiltroDeVersao();
+        pageEstoque.escolherVersaoInvalida("1.6");
+    }
+
+    @Entao("^o sistema mostra que nao ha resultados para essa versao$")
+    public void oSistemaMostraQueNaoHaResultadosParaEssaVersao() throws InterruptedException {
+        String txtNoTeste = pageEstoque.resultadoPesqVersaoInvalida();
+        String txtEsperado = "Nenhum resultado";
+        Assert.assertTrue(txtNoTeste.equals(txtEsperado));
     }
 }

@@ -24,4 +24,4 @@ Funcionalidade: pesquisa menu estoque
     Quando preencho o campo de marca
     E preencho o campo de modelo
     E preencho o campo com uma versao invalida
-    Entao o sistema mostra que nao ha resultados
+    Entao o sistema mostra que nao ha resultados para essa versao

@@ -18,7 +18,7 @@ public class EstoquePage extends BasePage {
     private By titleMarcaDoCarro = By.cssSelector("#root > main > div.container > div.Search-result.Search-result--container-left > div > div.Filters__container > div.NavBar > div.NavBar--content > div > form > div:nth-child(5) > div.Filters__container__group__title");
     private By txtResultadoPesquisa = By.cssSelector("#root > main > div.container > div.Search-result.Search-result--container-right > div.sc-Rmtcm.fAmcAQ > p");
     private By txtResultadoInvalidoMarcModel = By.cssSelector("#root > main > div.container > div.Search-result.Search-result--container-left > div > div.Slide.SlideLeft.SlideLeft--opened > div > div:nth-child(5) > div.Filters__line.Filters__line__result.Filters__line__result__error");
-    private By txtResultadoInvalidoVersao = By.cssSelector("#root > main > div.container > div.Search-result.Search-result--container-left > div > div.Slide.SlideLeft.SlideLeft--opened > div > div:nth-child(4) > div.Filters__line.Filters__line__result.Filters__line__result__error")
+    private By txtResultadoInvalidoVersao = By.cssSelector("#root > main > div.container > div.Search-result.Search-result--container-left > div > div.Slide.SlideLeft.SlideLeft--opened > div > div:nth-child(4) > div.Filters__line.Filters__line__result.Filters__line__result__error");
 
     public EstoquePage(WebDriver _browser) {
         super(_browser);
@@ -57,13 +57,39 @@ public class EstoquePage extends BasePage {
         browser.findElement(filtroDeVersao).click();
     }
 
-    public void escolherVersao(){
+    public void escolherVersao(String _versao){
         waitElementVisible(filtroDeVersao, 10);
+        browser.findElement(campoPesqVersao).sendKeys(_versao);
         browser.findElement(versaoDoCarro).click();
     }
 
     public String resultadoPesqCarro() throws InterruptedException {
         Thread.sleep(5000);
         return browser.findElement(txtResultadoPesquisa).getText();
+    }
+
+    public String resultadoPesqMarcModelInvalida() throws InterruptedException {
+        Thread.sleep(5000);
+        return browser.findElement(txtResultadoInvalidoMarcModel).getText();
+    }
+
+    public String resultadoPesqVersaoInvalida() throws InterruptedException {
+        Thread.sleep(5000);
+        return browser.findElement(txtResultadoInvalidoVersao).getText();
+    }
+
+    public void escolherMarcaInvalida( String _marca){
+        waitElementVisible(filtroDeMarcas, 10);
+        browser.findElement(campoPesqMarca).sendKeys(_marca);
+    }
+
+    public void escolherModeloInvalido( String _modelo){
+        waitElementVisible(filtroDeModelos, 10);
+        browser.findElement(campoPesqModelo).sendKeys(_modelo);
+    }
+
+    public void escolherVersaoInvalida(String _versao){
+        waitElementVisible(filtroDeVersao, 10);
+        browser.findElement(campoPesqVersao).sendKeys(_versao);
     }
 }
